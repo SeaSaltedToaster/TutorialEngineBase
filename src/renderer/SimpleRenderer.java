@@ -1,5 +1,6 @@
 package renderer;
 
+import org.lwjgl.glfw.GLFW;
 import org.lwjgl.opengl.GL11;
 
 import models.Vao;
@@ -20,6 +21,8 @@ public class SimpleRenderer {
 	public void render(Vao vao) {
 		prepare();
 		shader.useProgram();
+		shader.getModelColor().loadVec3(0.5f, (float) Math.abs(Math.sin(GLFW.glfwGetTime())), 0.5f);
+		shader.getTranslation().loadVec2((float) Math.sin(GLFW.glfwGetTime()) / 2, (float) Math.sin(GLFW.glfwGetTime() - 1f) / 2);
 		vao.render();
 		shader.stopProgram();
 	}

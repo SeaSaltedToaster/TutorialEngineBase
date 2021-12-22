@@ -8,6 +8,8 @@ import java.io.InputStreamReader;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL20;
 
+import renderer.shader.uniforms.Uniform;
+
 public class Shader {
 	
 	private int programID;
@@ -21,6 +23,10 @@ public class Shader {
 		GL20.glAttachShader(programID, fragmentShader);
 		GL20.glLinkProgram(programID);
 		GL20.glValidateProgram(programID);
+	}
+	
+	public void locateUniform(Uniform uniform) {
+		uniform.getUniformLocation(programID);
 	}
 	
 	public void useProgram() {

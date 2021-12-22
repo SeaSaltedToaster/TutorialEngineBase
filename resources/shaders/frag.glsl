@@ -4,8 +4,10 @@ in vec2 position;
 
 out vec4 out_Color;
 
+uniform vec3 color;
+
 void main(void)	{
 
-	out_Color = vec4(0.0f, 0.0f, 0.25f, 1.0f);
+	out_Color = vec4(color, 1.0f);
 
 }
