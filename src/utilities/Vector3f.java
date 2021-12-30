@@ -2,6 +2,7 @@ package utilities;
 
 import java.nio.FloatBuffer;
 
+//Credit to LWJGL 2 Util
 public class Vector3f {
 	
 	public float x, y, z;
