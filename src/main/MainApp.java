@@ -1,8 +1,11 @@
 package main;
 
+import entity.Camera;
+import entity.Transform;
 import models.Vao;
 import renderer.SimpleRenderer;
 import renderer.Window;
+import utilities.Vector3f;
 
 public class MainApp {
 
@@ -27,10 +30,15 @@ public class MainApp {
 		vao.setIndexCount(indices.length);
 		vao.unbind();
 		
+		Camera camera = new Camera();
+		camera.setPosition(new Vector3f(0,0,0));
+		
+		Transform transform = new Transform(new Vector3f(0.0f,0.0f,0.0f), new Vector3f(0,0,0), new Vector3f(1.0f,1.0f,1.0f));
+		
 		SimpleRenderer renderer = new SimpleRenderer();
 		
-		while(!window.shouldClose()) {
-			renderer.render(vao);
+		while(!window.shouldClose()) {					
+			renderer.render(vao, transform, camera);
 			window.updateWindow();
 		}
 		

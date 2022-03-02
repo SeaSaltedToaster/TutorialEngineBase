@@ -1,7 +1,7 @@
 package renderer;
 
 import renderer.shader.Shader;
-import renderer.shader.uniforms.UniformVec2;
+import renderer.shader.uniforms.UniformMatrix4f;
 import renderer.shader.uniforms.UniformVec3;
 
 public class SimpleShader extends Shader {
@@ -10,16 +10,22 @@ public class SimpleShader extends Shader {
 	private static final String fragmentShader = "/shaders/frag.glsl";
 	
 	protected UniformVec3 modelColor = new UniformVec3("color");
-	protected UniformVec2 translation = new UniformVec2("translation");
+	protected UniformMatrix4f transformation = new UniformMatrix4f("transformationMatrix");
+	protected UniformMatrix4f viewMatrix = new UniformMatrix4f("viewMatrix");
 
 	public SimpleShader() {
 		super(vertexShader, fragmentShader);
 		super.locateUniform(modelColor);
-		super.locateUniform(translation);
+		super.locateUniform(transformation);
+		super.locateUniform(viewMatrix);
 	}
 	
-	public UniformVec2 getTranslation() {
-		return translation;
+	public UniformMatrix4f getTransformation() {
+		return transformation;
+	}
+	
+	public UniformMatrix4f getViewMatrix() {
+		return viewMatrix;
 	}
 
 	public UniformVec3 getModelColor() {
