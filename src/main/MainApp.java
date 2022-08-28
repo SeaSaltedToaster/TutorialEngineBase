@@ -31,13 +31,14 @@ public class MainApp {
 		vao.unbind();
 		
 		Camera camera = new Camera();
-		camera.setPosition(new Vector3f(0,0,0));
+		camera.setPosition(new Vector3f(0.0f,0.0f,0.0f));
 		
-		Transform transform = new Transform(new Vector3f(0.0f,0.0f,0.0f), new Vector3f(0,0,0), new Vector3f(1.0f,1.0f,1.0f));
+		Transform transform = new Transform(new Vector3f(0.0f,0.0f,-2.0f), new Vector3f(0,0,0), new Vector3f(1.0f,1.0f,1.0f));
 		
 		SimpleRenderer renderer = new SimpleRenderer();
 		
-		while(!window.shouldClose()) {					
+		while(!window.shouldClose()) {	
+			transform.getRotation().y += 0.5f;
 			renderer.render(vao, transform, camera);
 			window.updateWindow();
 		}
