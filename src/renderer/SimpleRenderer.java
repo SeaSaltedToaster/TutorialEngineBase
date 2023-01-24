@@ -34,14 +34,20 @@ public class SimpleRenderer {
 		
 		prepare();
 		shader.useProgram();
-		shader.getModelColor().loadVec3(0.5f, (float) Math.abs(Math.sin(GLFW.glfwGetTime())), 0.5f);
+		
+		shader.getModelColor().loadVec3(0.5f, 1.0f, 0.5f);
+		
 		Matrix4f transformationMatrix = utils.createTransformationMatrix(entity.getTransform());
 		shader.getTransformation().loadMatrix(transformationMatrix);
+		
 		Matrix4f viewMatrix = utils.createViewMatrix(camera);
 		shader.getViewMatrix().loadMatrix(viewMatrix);
+		
 		Matrix4f projectionMatrix = utils.createProjectionMatrix(90, 0.1f, 1500f);
 		shader.getProjectionMatrix().loadMatrix(projectionMatrix);
+		
 		comp.getVao().render();
+		
 		shader.stopProgram();
 	}
 	

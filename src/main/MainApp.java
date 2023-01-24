@@ -1,5 +1,8 @@
 package main;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.lwjgl.glfw.GLFW;
 
 import entity.Camera;
@@ -28,6 +31,7 @@ public class MainApp {
 			0,1,2
 		};
 		
+		//Create our example model use the vertices above
 		Vao vao = new Vao();
 		vao.bind();
 		vao.createFloatAttribute(0, vertices, 3);
@@ -39,6 +43,7 @@ public class MainApp {
 		Camera camera = new Camera();
 		camera.setPosition(new Vector3f(0.0f,0.0f,0.0f));
 		
+		//Create our renderer object
 		SimpleRenderer renderer = new SimpleRenderer();
 		
 		//Entities
@@ -48,8 +53,7 @@ public class MainApp {
 		entity.addComponent(new ModelComponent(vao));
 		
 		while(!window.shouldClose()) {	
-			transform.getRotation().y += 1f;
-			transform.getScale().setY((float) Math.sin(GLFW.glfwGetTime()) * 2);
+			transform.getRotation().z += 1f;
 			
 			camera.update(window.windowID);
 			renderer.render(entity, camera);
